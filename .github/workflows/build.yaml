@@ -4,7 +4,7 @@ on: [push]
 jobs:
   hello-world:
     name: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
@@ -18,5 +18,6 @@ jobs:
   deployment:
     needs:
       - build
+    run-on: ubuntu-22.04
     steps:
       - run: echo "done"
