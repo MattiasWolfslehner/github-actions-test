@@ -3,6 +3,7 @@ run-name: ${{ github.actor }} has tested helloWorld in java
 on: [push]
 jobs:
   hello-world:
+    name: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -14,3 +15,8 @@ jobs:
       - run: javac HelloWorld.java
       - run: java HelloWorld
   
+  deployment:
+    needs:
+      - build
+    steps:
+      - run: echo "done"
